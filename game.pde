@@ -1,20 +1,22 @@
 void game() {
-  straightEnemyTimer--;
-  spinningEnemyTimer--;
-  boomerangEnemyTimer--;
-  if (straightEnemyTimer<=0) {
-    enemies.add(new enemy(straightEnemyX));
-    straightEnemyTimer=50;
+  timer++;
+  if (timer%30==0) {
+    enemies.add(new enemy(straightEnemyX, -100));
   }
-  if(spinningEnemyTimer<=0){
+  if(timer%20==0){
     spinningEnemies.add(new spinningEnemy(spinningEnemyAngle));
-    spinningEnemyTimer=20;
   }
-  if(boomerangEnemyTimer<=0){
+  if(timer%40==0){
     boomerangEnemies.add(new boomerangEnemy(boomerangEnemyAngle, true));
     boomerangEnemies.add(new boomerangEnemy(boomerangEnemyAngle, false));
-    boomerangEnemyTimer=40;
   }
+  if(timer%50==0){
+    splittingEnemies.add(new splittingEnemy(splittingEnemyX));
+  }
+  textAlign(CENTER);
+  textSize(50);
+  fill(255, 255, 255);
+  text("Time: "+timer/60, width/2, height-100);
   ship.show();
   if (aKey) ship.move(-10, 0);
   if (dKey) ship.move(10, 0);
@@ -22,7 +24,15 @@ void game() {
   if (sKey) ship.move(0, 10);
   for (int i=0; i<enemies.size(); i++) {
     if (enemies.get(i).alive==true) {
-      enemies.get(i).move(0, 5);
+      if(enemies.get(i).diagonalLeft==true){
+        enemies.get(i).move(-10, -10);
+      }
+      else if(enemies.get(i).diagonalRight==true){
+        enemies.get(i).move(10, -10);
+      }
+      else{
+        enemies.get(i).move(0, 10);
+      }
       enemies.get(i).show();
       if (enemies.get(i).y>height+100) {
         enemies.get(i).alive=false;
@@ -65,6 +75,22 @@ void game() {
       }
     }
   }
+  for (int i=0; i<splittingEnemies.size(); i++) {
+    if (splittingEnemies.get(i).alive==true) {  
+      splittingEnemies.get(i).move(0, 5);
+      splittingEnemies.get(i).show();
+      if (splittingEnemies.get(i).y>height+100) {
+        splittingEnemies.get(i).alive=false;
+      }
+      if(splittingEnemies.get(i).y<-200){
+        splittingEnemies.get(i).alive=false;
+      }
+      if (dist(splittingEnemies.get(i).x, splittingEnemies.get(i).y, ship.x, ship.y)<(ship.hitbox+splittingEnemies.get(i).size)/2) {
+        mode=-1;
+        click=true;
+      }
+    }
+  }
   int index=0;
   for (int i=0; i<enemies.size(); i++) {
     if (enemies.get(index).alive==false) {
@@ -85,6 +111,14 @@ void game() {
   for (int i=0; i<boomerangEnemies.size(); i++) {
     if (boomerangEnemies.get(index).alive==false) {
       boomerangEnemies.remove(index);
+    } else {
+      index++;
+    }
+  }
+  index=0;
+  for (int i=0; i<splittingEnemies.size(); i++) {
+    if (splittingEnemies.get(index).alive==false) {
+      splittingEnemies.remove(index);
     } else {
       index++;
     }

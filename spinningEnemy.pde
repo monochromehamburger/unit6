@@ -22,7 +22,7 @@ class spinningEnemy extends GameObject{
     }
   }
   public void show(){
-    fill(255, 255, 255);
+    fill(115, 209, 69);
     circle(x, y, size);
     //println(x+" "+y);
   }

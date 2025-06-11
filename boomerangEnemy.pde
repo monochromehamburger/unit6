@@ -18,7 +18,6 @@ class boomerangEnemy extends GameObject{
     moveY=sin(angle*PI/180);
     if(!startingLeft){
       moveX*=-1;
-      println(moveX);
     }
     if(boomerangRight){
       boomerangEnemyAngle+=15;
@@ -34,7 +33,7 @@ class boomerangEnemy extends GameObject{
     }
   }
   public void show(){
-    fill(255, 255, 255);
+    fill(69, 169, 219);
     circle(x, y, size);
     //println(x+" "+y);
   }

@@ -1,9 +1,11 @@
 class enemy extends GameObject{
   boolean alive;
   int lives;
-  enemy(int x){
+  boolean diagonalLeft;
+  boolean diagonalRight;
+  enemy(float x, float y){
     this.x=x;
-    y=-100;
+    this.y=y;
     size=100;
     alive=true;
     if(goingRight){
