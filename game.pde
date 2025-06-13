@@ -1,16 +1,16 @@
 void game() {
   timer++;
-  if (timer%30==0) {
+  if (timer%(50*multiplier)==0) {
     enemies.add(new enemy(straightEnemyX, -100));
   }
-  if(timer%20==0){
+  if(timer%(30*multiplier)==0){
     spinningEnemies.add(new spinningEnemy(spinningEnemyAngle));
   }
-  if(timer%40==0){
+  if(timer%(80*multiplier)==0){
     boomerangEnemies.add(new boomerangEnemy(boomerangEnemyAngle, true));
     boomerangEnemies.add(new boomerangEnemy(boomerangEnemyAngle, false));
   }
-  if(timer%50==0){
+  if(timer%(70*multiplier)==0){
     splittingEnemies.add(new splittingEnemy(splittingEnemyX));
   }
   textAlign(CENTER);
@@ -25,10 +25,10 @@ void game() {
   for (int i=0; i<enemies.size(); i++) {
     if (enemies.get(i).alive==true) {
       if(enemies.get(i).diagonalLeft==true){
-        enemies.get(i).move(-10, -10);
+        enemies.get(i).move(-10, 5);
       }
       else if(enemies.get(i).diagonalRight==true){
-        enemies.get(i).move(10, -10);
+        enemies.get(i).move(10, 5);
       }
       else{
         enemies.get(i).move(0, 10);
@@ -39,6 +39,12 @@ void game() {
       }
       if (dist(enemies.get(i).x, enemies.get(i).y, ship.x, ship.y)<(ship.hitbox+enemies.get(i).size)/2) {
         mode=-1;
+        if(enemies.get(i).diagonalLeft==true || enemies.get(i).diagonalRight==true){
+          splittingEnemyMinionDeathCount++;
+        }
+        else{
+          regularEnemyDeathCount++;
+        }
         click=true;
       }
     }
@@ -55,6 +61,7 @@ void game() {
       }
       if (dist(spinningEnemies.get(i).x, spinningEnemies.get(i).y, ship.x, ship.y)<(ship.hitbox+spinningEnemies.get(i).size)/2) {
         mode=-1;
+        spinningEnemyDeathCount++;
         click=true;
       }
     }
@@ -71,6 +78,7 @@ void game() {
       }
       if (dist(boomerangEnemies.get(i).x, boomerangEnemies.get(i).y, ship.x, ship.y)<(ship.hitbox+boomerangEnemies.get(i).size)/2) {
         mode=-1;
+        boomerangEnemyDeathCount++;
         click=true;
       }
     }
@@ -87,6 +95,7 @@ void game() {
       }
       if (dist(splittingEnemies.get(i).x, splittingEnemies.get(i).y, ship.x, ship.y)<(ship.hitbox+splittingEnemies.get(i).size)/2) {
         mode=-1;
+        splittingEnemyDeathCount++;
         click=true;
       }
     }

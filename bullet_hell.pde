@@ -14,13 +14,18 @@ int straightEnemyX=0;
 int spinningEnemyAngle=0;
 int boomerangEnemyAngle=0;
 int splittingEnemyX=0;
-boolean splittingRight=true;
 boolean spinningRight=true;
 boolean goingRight=true;
 boolean click=true;
 boolean boomerangRight=true;
 int splitDistance=200;
 boolean splitDown=true;
+float multiplier;
+int regularEnemyDeathCount=0;
+int spinningEnemyDeathCount=0;
+int boomerangEnemyDeathCount=0;
+int splittingEnemyDeathCount=0;
+int splittingEnemyMinionDeathCount=0;
 void setup(){
   size(2000, 1500, P2D);
   ship=new player();
@@ -51,6 +56,50 @@ void keyPressed() {
   if (key=='s') {
     sKey=true;
   }
+  if(key=='1' && click==true){
+    enemies=new ArrayList<enemy>();
+    mode=1;
+    ship=new player(); 
+    spinningEnemies=new ArrayList<spinningEnemy>();
+    boomerangEnemies=new ArrayList<boomerangEnemy>();
+    splittingEnemies=new ArrayList<splittingEnemy>();
+    timer=0;
+    click=false;
+    multiplier=1.5;
+  }
+  if(key=='2' && click==true){
+    enemies=new ArrayList<enemy>();
+    mode=1;
+    ship=new player(); 
+    spinningEnemies=new ArrayList<spinningEnemy>();
+    boomerangEnemies=new ArrayList<boomerangEnemy>();
+    splittingEnemies=new ArrayList<splittingEnemy>();
+    timer=0;
+    click=false;
+    multiplier=1;
+  }
+  if(key=='3' && click==true){
+    enemies=new ArrayList<enemy>();
+    mode=1;
+    ship=new player(); 
+    spinningEnemies=new ArrayList<spinningEnemy>();
+    boomerangEnemies=new ArrayList<boomerangEnemy>();
+    splittingEnemies=new ArrayList<splittingEnemy>();
+    timer=0;
+    click=false;
+    multiplier=0.75;
+  }
+  if(key=='4' && click==true){
+    enemies=new ArrayList<enemy>();
+    mode=1;
+    ship=new player(); 
+    spinningEnemies=new ArrayList<spinningEnemy>();
+    boomerangEnemies=new ArrayList<boomerangEnemy>();
+    splittingEnemies=new ArrayList<splittingEnemy>();
+    timer=0;
+    click=false;
+    multiplier=0.5;
+  }
 }
 void keyReleased(){  
   if (key=='a') {
@@ -67,14 +116,4 @@ void keyReleased(){
   }
 }
 void mouseClicked(){
-  if(click==true){
-    enemies=new ArrayList<enemy>();
-    mode=1;
-    ship=new player(); 
-    spinningEnemies=new ArrayList<spinningEnemy>();
-    boomerangEnemies=new ArrayList<boomerangEnemy>();
-    splittingEnemies=new ArrayList<splittingEnemy>();
-    timer=0;
-    click=false;
-  }
 }

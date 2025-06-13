@@ -9,13 +9,13 @@ class enemy extends GameObject{
     size=100;
     alive=true;
     if(goingRight){
-      straightEnemyX+=150;
+      straightEnemyX+=150*multiplier;
       if(straightEnemyX>=width){
         goingRight=false;
       }
     }
     else{
-      straightEnemyX-=150;
+      straightEnemyX-=150*multiplier;
       if(straightEnemyX<=0){
         goingRight=true;
       }

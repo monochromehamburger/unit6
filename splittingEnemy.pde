@@ -7,19 +7,11 @@ class splittingEnemy extends GameObject{
     y=-100;
     size=100;
     alive=true;
-    if(splittingRight){
-      splittingEnemyX+=250;
-      if(splittingEnemyX>=width){
-        splittingRight=false;
-      }
+    splittingEnemyX+=250;
+    if(splittingEnemyX>=width){
+      splittingEnemyX=0;
     }
-    else{
-      splittingEnemyX-=250;
-      if(splittingEnemyX<=0){
-        splittingRight=true;
-      }
-    }
-    splitDistance=1200;
+    splitDistance=300;
   }
   public void show(){
     fill(233, 42, 247);
@@ -30,14 +22,16 @@ class splittingEnemy extends GameObject{
   public void move(int changeX, int changeY){
     x+=changeX;
     y+=changeY;
-    if(y==splitDistance){
+    if(y%splitDistance==0){
       enemies.add(new enemy(x, y));
       enemies.get(enemies.size()-1).diagonalLeft=true;
+      enemies.get(enemies.size()-1).size/=3;
       enemies.add(new enemy(x, y));
       enemies.get(enemies.size()-1).diagonalRight=true;
-      if(!goingRight) straightEnemyX+=300;
+      enemies.get(enemies.size()-1).size/=3;
+      if(!goingRight) straightEnemyX+=300*multiplier;
       else{
-        straightEnemyX-=300;
+        straightEnemyX-=300*multiplier;
       }
     }
   }
