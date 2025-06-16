@@ -17,5 +17,6 @@ void lose(){
   text("Blue enemies "+boomerangEnemyDeathCount+" times.", width/2+300, height/2+300);
   text("Pink enemies "+splittingEnemyDeathCount+" times.", width/2+300, height/2+350);
   text("Pink enemies' bullets "+splittingEnemyMinionDeathCount+" times.", width/2+300, height/2+400);
+  text("Lasers "+laserDeathCount+" times.", width/2+300, height/2+450);
   click=true;
 }

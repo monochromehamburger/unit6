@@ -28,7 +28,7 @@ class splittingEnemy extends GameObject{
       enemies.get(enemies.size()-1).size/=3;
       enemies.add(new enemy(x, y));
       enemies.get(enemies.size()-1).diagonalRight=true;
-      enemies.get(enemies.size()-1).size/=3;
+      enemies.get(enemies.size()-1).size/=4;
       if(!goingRight) straightEnemyX+=300*multiplier;
       else{
         straightEnemyX-=300*multiplier;

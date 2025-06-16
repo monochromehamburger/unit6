@@ -6,12 +6,19 @@ void game() {
   if(timer%(30*multiplier)==0){
     spinningEnemies.add(new spinningEnemy(spinningEnemyAngle));
   }
-  if(timer%(80*multiplier)==0){
+  if(timer%(120*multiplier)==0){
     boomerangEnemies.add(new boomerangEnemy(boomerangEnemyAngle, true));
     boomerangEnemies.add(new boomerangEnemy(boomerangEnemyAngle, false));
   }
   if(timer%(70*multiplier)==0){
     splittingEnemies.add(new splittingEnemy(splittingEnemyX));
+  }
+  if(timer%180*multiplier==0){
+    lasers.add(new laser(laserX));
+    laserX++;
+    if(laserX==8){
+      laserX=0;
+    }
   }
   textAlign(CENTER);
   textSize(50);
@@ -100,6 +107,16 @@ void game() {
       }
     }
   }
+  for (int i=0; i<lasers.size(); i++) {
+    if (lasers.get(i).alive==true) {  
+      lasers.get(i).show();
+      if (ship.x>lasers.get(i).x && ship.x<lasers.get(i).x+250 && lasers.get(i).active==true) {
+        mode=-1;
+        laserDeathCount++;
+        click=true;
+      }
+    }
+  }
   int index=0;
   for (int i=0; i<enemies.size(); i++) {
     if (enemies.get(index).alive==false) {
@@ -128,6 +145,14 @@ void game() {
   for (int i=0; i<splittingEnemies.size(); i++) {
     if (splittingEnemies.get(index).alive==false) {
       splittingEnemies.remove(index);
+    } else {
+      index++;
+    }
+  }
+  index=0;
+  for (int i=0; i<lasers.size(); i++) {
+    if (lasers.get(index).alive==false) {
+      lasers.remove(index);
     } else {
       index++;
     }
