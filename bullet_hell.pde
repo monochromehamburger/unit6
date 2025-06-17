@@ -29,11 +29,16 @@ int splittingEnemyDeathCount=0;
 int splittingEnemyMinionDeathCount=0;
 int laserDeathCount=0;
 int laserX;
+int highscore1=0;
+int highscore2=0;
+int highscore3=0;
+int highscore4=0;
 void setup(){
   size(2000, 1500, P2D);
   ship=new player();
   splittingEnemyX=500;
-  laserX=int(random(8));
+  laserX=int(random(5));
+  frameRate(60);
 }
 void draw(){
   background(0, 0, 0);

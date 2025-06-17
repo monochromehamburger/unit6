@@ -13,10 +13,10 @@ void game() {
   if(timer%(70*multiplier)==0){
     splittingEnemies.add(new splittingEnemy(splittingEnemyX));
   }
-  if(timer%180*multiplier==0){
+  if(timer%240*multiplier==0){
     lasers.add(new laser(laserX));
     laserX++;
-    if(laserX==8){
+    if(laserX==5){
       laserX=0;
     }
   }
@@ -110,7 +110,7 @@ void game() {
   for (int i=0; i<lasers.size(); i++) {
     if (lasers.get(i).alive==true) {  
       lasers.get(i).show();
-      if (ship.x>lasers.get(i).x && ship.x<lasers.get(i).x+250 && lasers.get(i).active==true) {
+      if (ship.x>lasers.get(i).x && ship.x<lasers.get(i).x+400 && lasers.get(i).active==true) {
         mode=-1;
         laserDeathCount++;
         click=true;
