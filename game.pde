@@ -1,5 +1,6 @@
 void game() {
   timer++;
+  image(image, 0, 0, width, height);
   if (timer%(50*multiplier)==0) {
     enemies.add(new enemy(straightEnemyX, -100));
   }
