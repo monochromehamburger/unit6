@@ -33,6 +33,7 @@ int highscore1=0;
 int highscore2=0;
 int highscore3=0;
 int highscore4=0;
+PFont font;
 PImage image;
 void setup(){
   size(2000, 1500, P2D);
@@ -41,6 +42,9 @@ void setup(){
   laserX=int(random(5));
   frameRate(60);
   image=loadImage("space.png");
+  
+  font = createFont("AgencyFB-Reg-48", 128);
+  textFont(font);
 }
 void draw(){
   background(0, 0, 0);

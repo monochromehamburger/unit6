@@ -6,19 +6,19 @@ void lose(){
   text("YOU LOSE Skill ISSUE", width/2, height/2-600);
   text("You survived for "+timer/60+" seconds", width/2, height/2-500);
   if(multiplier==1.5 && highscore1<=timer){
-    text("That's a new record for hard mode!", width/2, height/2-400);
+    text("That's a record for hard mode!", width/2, height/2-400);
     highscore1=timer;
   }
   if(multiplier==1 && highscore2<=timer){
-    text("That's a new record for easy demon mode!", width/2, height/2-400);
+    text("That's a record for easy demon mode!", width/2, height/2-400);
     highscore2=timer;
   }
   if(multiplier==0.75 && highscore3<=timer){
-    text("That's a new record for extreme demon mode!", width/2, height/2-400);
+    text("That's a record for extreme demon mode!", width/2, height/2-400);
     highscore3=timer;
   }
   if(multiplier==0.5 && highscore4<=timer){
-    text("That's a new record for grandpa demon mode!", width/2, height/2-400);
+    text("That's a record for grandpa demon mode!", width/2, height/2-400);
     highscore4=timer;
   }
   text("Choose difficulty again", width/2, height/2-300);
