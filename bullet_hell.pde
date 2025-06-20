@@ -35,8 +35,14 @@ int highscore3=0;
 int highscore4=0;
 PFont font;
 PImage image;
+SoundFile fail;
+SoundFile success;
+SoundFile music;
 void setup(){
   size(2000, 1500, P2D);
+  fail = new SoundFile(this, "FAILURE.wav");
+  success = new SoundFile(this, "SUCCESS.wav");
+  music=new SoundFile(this, "MUSIC.mp3");
   ship=new player();
   splittingEnemyX=500;
   laserX=int(random(5));
@@ -45,6 +51,7 @@ void setup(){
   
   font = createFont("AgencyFB-Reg-48", 128);
   textFont(font);
+  music.loop();
 }
 void draw(){
   background(0, 0, 0);

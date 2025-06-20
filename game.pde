@@ -53,6 +53,7 @@ void game() {
         else{
           regularEnemyDeathCount++;
         }
+        fail.play();
         click=true;
       }
     }
@@ -70,6 +71,7 @@ void game() {
       if (dist(spinningEnemies.get(i).x, spinningEnemies.get(i).y, ship.x, ship.y)<(ship.hitbox+spinningEnemies.get(i).size)/2) {
         mode=-1;
         spinningEnemyDeathCount++;
+        fail.play();
         click=true;
       }
     }
@@ -87,6 +89,7 @@ void game() {
       if (dist(boomerangEnemies.get(i).x, boomerangEnemies.get(i).y, ship.x, ship.y)<(ship.hitbox+boomerangEnemies.get(i).size)/2) {
         mode=-1;
         boomerangEnemyDeathCount++;
+        fail.play();
         click=true;
       }
     }
@@ -104,6 +107,7 @@ void game() {
       if (dist(splittingEnemies.get(i).x, splittingEnemies.get(i).y, ship.x, ship.y)<(ship.hitbox+splittingEnemies.get(i).size)/2) {
         mode=-1;
         splittingEnemyDeathCount++;
+        fail.play();
         click=true;
       }
     }
@@ -114,6 +118,7 @@ void game() {
       if (ship.x>lasers.get(i).x && ship.x<lasers.get(i).x+400 && lasers.get(i).active==true) {
         mode=-1;
         laserDeathCount++;
+        fail.play();
         click=true;
       }
     }
