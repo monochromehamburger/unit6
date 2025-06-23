@@ -4,17 +4,30 @@ void game() {
   if (timer%(50*multiplier)==0) {
     enemies.add(new enemy(straightEnemyX, -100));
   }
-  if(timer%(30*multiplier)==0){
+  if(timer>360*multiplier && timer%(30*multiplier)==0){
     spinningEnemies.add(new spinningEnemy(spinningEnemyAngle));
-  }
-  if(timer%(120*multiplier)==0){
+  } 
+  if(timer>900*multiplier && timer%(60*multiplier)==0){
     boomerangEnemies.add(new boomerangEnemy(boomerangEnemyAngle, true));
     boomerangEnemies.add(new boomerangEnemy(boomerangEnemyAngle, false));
+    
+    if(boomerangRight){
+      boomerangEnemyAngle+=10;
+      if(boomerangEnemyAngle>=180){
+        boomerangRight=false;
+      }
+    }
+    else{
+      boomerangEnemyAngle-=10;
+      if(boomerangEnemyAngle<=0){
+        boomerangRight=true;
+      }
+    }
   }
-  if(timer%(70*multiplier)==0){
+  if(timer>1800*multiplier && timer%(70*multiplier)==0){
     splittingEnemies.add(new splittingEnemy(splittingEnemyX));
   }
-  if(timer%240*multiplier==0){
+  if(timer>1200*multiplier && timer%240*multiplier==0){
     lasers.add(new laser(laserX));
     laserX++;
     if(laserX==5){

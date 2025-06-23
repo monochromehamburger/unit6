@@ -8,7 +8,7 @@ class player extends GameObject{
     hitbox=0;
   }
   public void show(){
-    fill(77, 132, 217);
+    fill(240, 121, 29);
     circle(x, y, size);
     //println(x+" "+y);
   }

@@ -12,24 +12,13 @@ class boomerangEnemy extends GameObject{
       x=width-200;
     }
     y=-100;
-    size=100;
+    size=50;
     alive=true;
     moveX=cos(angle*PI/180);
     moveY=sin(angle*PI/180);
     if(!startingLeft){
       moveX*=-1;
-    }
-    if(boomerangRight){
-      boomerangEnemyAngle+=15;
-      if(boomerangEnemyAngle>=180){
-        boomerangRight=false;
-      }
-    }
-    else{
-      boomerangEnemyAngle-=15;
-      if(boomerangEnemyAngle<=0){
-        boomerangRight=true;
-      }
+      goingLeft=true;
     }
   }
   public void show(){
